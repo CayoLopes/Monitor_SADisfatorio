@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Sistema de apoio à decisão (AHP) para escolher o melhor monitor acadêmico." />
+  <meta name="theme-color" content="#8db4f0" />
+  <title>AHP Monitor · Seleção de monitores</title>
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-mark" id="brandMark" aria-hidden="true"></div>
+      <div>
+        <div class="brand-title">Monitor SADisfatório </div>
+        <div class="brand-sub">Apoio à decisão para seleção de monitores</div>
+      </div>
+    </div>
+    <button class="btn btn-ghost btn-sm" id="btnRestart" type="button">Recomeçar</button>
+  </header>
+
+  <nav class="stepper" id="stepper" aria-label="Etapas"></nav>
+
+  <main class="app-main" id="view" tabindex="-1"></main>
+
+  <footer class="app-nav">
+    <div class="app-nav-inner">
+      <button class="btn btn-ghost" id="navBack" type="button">Voltar</button>
+      <div class="nav-hint" id="navHint" aria-live="polite"></div>
+      <button class="btn btn-primary" id="navNext" type="button">Continuar</button>
+    </div>
+  </footer>
+
+  <!-- Núcleo (puro) -->
+  <script src="src/core/ahp.js"></script>
+  <!-- Dados e estado -->
+  <script src="src/ui/dom.js"></script>
+  <script src="src/ui/icons.js"></script>
+  <script src="src/data/criteria.js"></script>
+  <script src="src/data/store.js"></script>
+  <!-- UI -->
+  <script src="src/ui/components.js"></script>
+  <script src="src/views/candidates.js"></script>
+  <script src="src/views/criteria.js"></script>
+  <script src="src/views/weights.js"></script>
+  <script src="src/views/compare.js"></script>
+  <script src="src/views/result.js"></script>
+  <script>document.getElementById('brandMark').appendChild(App.icon('logo'));</script>
+  <script src="src/app.js"></script>
+</body>
+</html>
