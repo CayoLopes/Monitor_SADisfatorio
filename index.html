@@ -1,54 +1,99 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Sistema de apoio à decisão (AHP) para escolher o melhor monitor acadêmico." />
-  <meta name="theme-color" content="#8db4f0" />
-  <title>AHP Monitor · Seleção de monitores</title>
-  <link rel="stylesheet" href="assets/css/tokens.css" />
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/components.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistema de apoio à decisão (AHP) para escolher o melhor monitor acadêmico.">
+  <title>Monitor SADisfatório — Apoio à decisão</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/tema.css">
+  <link rel="stylesheet" href="css/modulos.css">
 </head>
 <body>
-  <header class="app-header">
-    <div class="brand">
-      <div class="brand-mark" id="brandMark" aria-hidden="true"></div>
-      <div>
-        <div class="brand-title">Monitor SADisfatório </div>
-        <div class="brand-sub">Apoio à decisão para seleção de monitores</div>
+  <!-- ícones -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-plus" viewBox="0 0 24 24">
+        <line x1="12" y1="5" x2="12" y2="19"/>
+        <line x1="5" y1="12" x2="19" y2="12"/>
+      </symbol>
+      <symbol id="i-x" viewBox="0 0 24 24">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </symbol>
+      <symbol id="i-sparkles" viewBox="0 0 24 24">
+        <path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/>
+      </symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24">
+        <polyline points="3 6 5 6 21 6"/>
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+      </symbol>
+      <symbol id="i-download" viewBox="0 0 24 24">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </symbol>
+      <symbol id="i-users" viewBox="0 0 24 24">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </symbol>
+      <symbol id="i-award" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="7"/>
+        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+      </symbol>
+      <symbol id="i-printer" viewBox="0 0 24 24">
+        <polyline points="6 9 6 2 18 2 18 9"/>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <rect x="6" y="14" width="12" height="8"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="topo">
+    <div class="app topo-in">
+      <div class="marca">
+        <span class="marca-ico"><svg class="ico"><use href="#i-users"/></svg></span>
+        <div>
+          <h1>Monitor SADisfatório</h1>
+          <p>Apoio à decisão</p>
+        </div>
       </div>
     </div>
-    <button class="btn btn-ghost btn-sm" id="btnRestart" type="button">Recomeçar</button>
   </header>
 
-  <nav class="stepper" id="stepper" aria-label="Etapas"></nav>
+  <main class="app">
+    <section class="modulo ativo" id="selecionar">
+      <div class="mod-head">
+        <div>
+          <h2>Quem merece a monitoria?</h2>
+          <p>Compare os candidatos dois a dois e descubra o melhor monitor.</p>
+        </div>
+        <div class="mod-acoes">
+          <button class="btn ghost sm" data-exemplo="ahp"><svg class="ico"><use href="#i-sparkles"/></svg>Exemplo</button>
+          <button class="btn ghost sm" data-limpar="ahp"><svg class="ico"><use href="#i-trash"/></svg>Limpar</button>
+        </div>
+      </div>
+      <div id="sel-app"></div>
+    </section>
+  </main>
 
-  <main class="app-main" id="view" tabindex="-1"></main>
+  <div class="toast" id="toast"><span id="toast-txt"></span></div>
 
-  <footer class="app-nav">
-    <div class="app-nav-inner">
-      <button class="btn btn-ghost" id="navBack" type="button">Voltar</button>
-      <div class="nav-hint" id="navHint" aria-live="polite"></div>
-      <button class="btn btn-primary" id="navNext" type="button">Continuar</button>
-    </div>
-  </footer>
-
-  <!-- Núcleo (puro) -->
-  <script src="src/core/ahp.js"></script>
-  <!-- Dados e estado -->
-  <script src="src/ui/dom.js"></script>
-  <script src="src/ui/icons.js"></script>
-  <script src="src/data/criteria.js"></script>
-  <script src="src/data/store.js"></script>
-  <!-- UI -->
-  <script src="src/ui/components.js"></script>
-  <script src="src/views/candidates.js"></script>
-  <script src="src/views/criteria.js"></script>
-  <script src="src/views/weights.js"></script>
-  <script src="src/views/compare.js"></script>
-  <script src="src/views/result.js"></script>
-  <script>document.getElementById('brandMark').appendChild(App.icon('logo'));</script>
-  <script src="src/app.js"></script>
+  <!-- núcleo -->
+  <script defer src="js/core/utils.js"></script>
+  <script defer src="js/core/state.js"></script>
+  <script defer src="js/core/calc.js"></script>
+  <!-- módulo Selecionar -->
+  <script defer src="js/features/selecionar/dados.js"></script>
+  <script defer src="js/features/selecionar/regras.js"></script>
+  <script defer src="js/features/selecionar/telas.js"></script>
+  <script defer src="js/features/selecionar/index.js"></script>
+  <!-- inicialização -->
+  <script defer src="js/core/app.js"></script>
 </body>
 </html>
