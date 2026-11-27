@@ -1,33 +1,29 @@
-/* ===== UTILITÁRIOS ===== */
-
 const uid = () => Math.random().toString(36).slice(2, 9);
 
-// Escapa texto digitado antes de colocá-lo em HTML
-function esc(s) {
-  const trocas = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' };
-  return String(s ?? '').replace(/[&<>"]/g, (c) => trocas[c]);
+function esc(texto) {
+  const entidades = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' };
+  return String(texto ?? '').replace(/[&<>"]/g, (c) => entidades[c]);
 }
 
-// Números no formato brasileiro (vírgula decimal)
-const f1 = (x) => x.toFixed(1).replace('.', ',');
-const f2 = (x) => x.toFixed(2).replace('.', ',');
-const f3 = (x) => x.toFixed(3).replace('.', ',');
-const pct = (v) => (isFinite(v) ? f1(v) + '%' : '—'); // recebe pontos percentuais (0-100)
+const formatar = (casas) => (n) => n.toFixed(casas).replace('.', ',');
+const f1 = formatar(1);
+const f2 = formatar(2);
+const f3 = formatar(3);
+const pct = (pontos) => (isFinite(pontos) ? f1(pontos) + '%' : '—');
 
-function toast(txt) {
+function toast(mensagem) {
   const el = document.getElementById('toast');
-  document.getElementById('toast-txt').textContent = txt;
+  document.getElementById('toast-txt').textContent = mensagem;
   el.classList.add('mostrar');
-  clearTimeout(el._t);
-  el._t = setTimeout(() => el.classList.remove('mostrar'), 1800);
+  clearTimeout(el._timer);
+  el._timer = setTimeout(() => el.classList.remove('mostrar'), 1800);
 }
 
-function download(filename, content, mime) {
-  const blob = new Blob([content], { type: mime || 'application/octet-stream' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  a.click();
+function download(nomeArquivo, conteudo, tipo = 'application/octet-stream') {
+  const url = URL.createObjectURL(new Blob([conteudo], { type: tipo }));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = nomeArquivo;
+  link.click();
   setTimeout(() => URL.revokeObjectURL(url), 500);
 }

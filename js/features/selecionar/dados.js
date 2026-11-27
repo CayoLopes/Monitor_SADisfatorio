@@ -1,4 +1,3 @@
-// Critérios sugeridos para a escolha de monitor (o usuário também pode criar os seus).
 const CRITERIOS_SUGERIDOS = [
   { id: 'cr', nome: 'Coeficiente de rendimento', desc: 'Desempenho acadêmico geral do aluno.' },
   { id: 'disp', nome: 'Disponibilidade', desc: 'Horários livres para atender a turma.' },
@@ -9,5 +8,9 @@ const CRITERIOS_SUGERIDOS = [
   { id: 'afin', nome: 'Afinidade pessoal', desc: 'Relacionamento e alinhamento de trabalho.' },
 ];
 
-// Limites do modelo
-const LIMITES = { minCand: 2, maxCand: 10, minCrit: 3, maxCrit: 6 };
+const LIMITES = {
+  minCandidatos: 2,
+  maxCandidatos: 10,
+  minCriterios: 3,
+  maxCriterios: 6,
+};

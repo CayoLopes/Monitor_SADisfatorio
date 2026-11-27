@@ -8,6 +8,13 @@ function renderTudo() {
   renderSelecionar();
 }
 
+function avisarBibliotecaAusente() {
+  document.getElementById('sel-app').innerHTML = `
+    <div class="nota erro">
+      Não foi possível carregar a biblioteca AHP (ahp-lite). Verifique a conexão com a internet e recarregue a página.
+    </div>`;
+}
+
 document.querySelectorAll('[data-exemplo]').forEach((botao) => {
   botao.onclick = () => {
     EXEMPLOS[botao.dataset.exemplo]();
@@ -30,4 +37,5 @@ document.querySelectorAll('[data-limpar]').forEach((botao) => {
   };
 });
 
-renderTudo();
+if (AhpLib.disponivel()) renderTudo();
+else avisarBibliotecaAusente();

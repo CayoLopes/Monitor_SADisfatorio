@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="css/modulos.css">
 </head>
 <body>
-  <!-- ícones -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <symbol id="i-plus" viewBox="0 0 24 24">
@@ -83,17 +82,29 @@
   </main>
 
   <div class="toast" id="toast"><span id="toast-txt"></span></div>
+  <script type="module">
+    import ahpLite from 'https://esm.sh/ahp-lite@1.2.1';
+    import linearAlgebra from 'https://esm.sh/linear-algebra@3';
 
-  <!-- núcleo -->
+    window.AhpLite = { getWeights: ahpLite.getWeights, Matrix: linearAlgebra().Matrix };
+  </script>
+
   <script defer src="js/core/utils.js"></script>
   <script defer src="js/core/state.js"></script>
+  <script defer src="js/core/ahp-lib.js"></script>
   <script defer src="js/core/calc.js"></script>
-  <!-- módulo Selecionar -->
+
   <script defer src="js/features/selecionar/dados.js"></script>
   <script defer src="js/features/selecionar/regras.js"></script>
-  <script defer src="js/features/selecionar/telas.js"></script>
+  <script defer src="js/features/selecionar/telas/componentes.js"></script>
+  <script defer src="js/features/selecionar/telas/passos.js"></script>
+  <script defer src="js/features/selecionar/telas/montar.js"></script>
+  <script defer src="js/features/selecionar/telas/comparar.js"></script>
+  <script defer src="js/features/selecionar/telas/resultado.js"></script>
+  <script defer src="js/features/selecionar/exemplo.js"></script>
   <script defer src="js/features/selecionar/index.js"></script>
-  <!-- inicialização -->
+  <script defer src="js/features/selecionar/eventos.js"></script>
+
   <script defer src="js/core/app.js"></script>
 </body>
 </html>

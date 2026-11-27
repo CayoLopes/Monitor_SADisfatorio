@@ -1,0 +1,14 @@
+{
+  "name": "monitor-sadisfatorio",
+  "version": "2.0.0",
+  "description": "Sistema de apoio à decisão (AHP) para escolher o melhor monitor acadêmico",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "test": "node tests/calc.test.js"
+  },
+  "dependencies": {
+    "ahp-lite": "^1.2.1",
+    "linear-algebra": "^3.0.0"
+  },
+  "license": "MIT"
+}
