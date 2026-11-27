@@ -6,7 +6,9 @@ Os pesos de prioridade e a razão de consistência de cada matriz de comparaçã
 biblioteca [`ahp-lite`](https://www.npmjs.com/package/ahp-lite). O restante (escala da barra, síntese
 hierárquica, diagnóstico de julgamentos e interface) fica no projeto.
 
-## Executar
+Link para visualização via github pages: https://cayolopes.github.io/Monitor_SADisfatorio/
+
+## Execução local
 
 ```bash
 npm install
